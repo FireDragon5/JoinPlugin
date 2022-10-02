@@ -1,5 +1,6 @@
 package me.firedragon5.joinplugin.events;
 
+import me.clip.placeholderapi.PlaceholderAPI;
 import me.firedragon5.joinplugin.JoinPlugin;
 import me.firedragon5.joinplugin.Utils;
 import org.bukkit.Bukkit;
@@ -90,7 +91,10 @@ public class JoinEvent implements Listener {
 				int random = (int) (Math.random() * randomJoinMessage.length);
 				event.setJoinMessage(Utils.chat(randomJoinMessage[random].replace("%player%", player.getName())));
 			} else {
-				event.setJoinMessage(Utils.chat(plugin.getConfig().getString("Join_Message").replace("%player%", player.getName())));
+				event.setJoinMessage(
+						PlaceholderAPI.setPlaceholders(player, plugin.getConfig().getString("Join_Message")
+								.replace("%player%", player.getName())));
+
 
 			}
 
@@ -109,7 +113,9 @@ public class JoinEvent implements Listener {
 
 		if (plugin.getConfig().getBoolean("JoinMessage_Staff")) {
 			if (player.hasPermission("joinplugin.staff.join")) {
-				event.setJoinMessage(Utils.chat(plugin.getConfig().getString("Staff_Join_Message").replace("%player%", player.getName())));
+				event.setJoinMessage(PlaceholderAPI.setPlaceholders(
+						player, plugin.getConfig().getString("Staff_Join_Message")
+								.replace("%player%", player.getName())));
 
 			}
 //
@@ -155,8 +161,9 @@ public class JoinEvent implements Listener {
 //			 Get the style of the bossbar out of the config
 			BarStyle style = BarStyle.valueOf(plugin.getConfig().getString("BossBar_Style").toUpperCase());
 
-			BossBar bossBar = Bukkit.createBossBar(Utils.chat(plugin.getConfig().getString("BossBar_Message")
-					.replace("%player%", player.getDisplayName())), color, style);
+			BossBar bossBar = Bukkit.createBossBar(PlaceholderAPI.setPlaceholders(
+					player, plugin.getConfig().getString("BossBar_Message")
+							.replace("%player%", player.getName())), color, style);
 
 			bossBar.addPlayer(player);
 			bossBar.setVisible(true);
@@ -172,9 +179,14 @@ public class JoinEvent implements Listener {
 						bossBar.removeAll();
 						return;
 					}
-					bossBar.setTitle(Utils.chat(plugin.getConfig().getString("BossBar_Message")
-							.replace("%player%", player.getDisplayName()))
-							.replace("%time%", String.valueOf(timeLeft[0])));
+					bossBar.setTitle(
+
+							PlaceholderAPI.setPlaceholders(
+									player, plugin.getConfig().getString("BossBar_Message")
+											.replace("%player%", player.getName())
+									.replace("%time%", String.valueOf(timeLeft[0]))));
+
+
 					timeLeft[0]--;
 				}
 			}, 0, 20);
