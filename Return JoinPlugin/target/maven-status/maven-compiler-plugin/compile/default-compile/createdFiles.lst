@@ -1,0 +1,14 @@
+me\firedragon5\joinplugin\TabComplete.class
+me\firedragon5\joinplugin\events\JoinEvent.class
+me\firedragon5\joinplugin\menu\Gui$1.class
+me\firedragon5\joinplugin\commands\reloadCommand.class
+me\firedragon5\joinplugin\events\JoinEvent$2.class
+me\firedragon5\joinplugin\menu\Gui.class
+me\firedragon5\joinplugin\JoinPlugin.class
+me\firedragon5\joinplugin\events\JoinEvent$3.class
+me\firedragon5\joinplugin\commands\AllCommands.class
+me\firedragon5\joinplugin\events\LeaveEvent.class
+me\firedragon5\joinplugin\commands\menuCommand.class
+me\firedragon5\joinplugin\Utils.class
+me\firedragon5\joinplugin\events\JoinEvent$1.class
+me\firedragon5\joinplugin\commands\JoinMessageCommand.class
