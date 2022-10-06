@@ -35,21 +35,12 @@ public final class JoinPlugin extends JavaPlugin {
 		YamlConfiguration config = YamlConfiguration.loadConfiguration(file);
 
 
-
-
-
 		if(config.getDouble("Config_Version") == 1.1 || !config.contains("Config_Version")){
 			getLogger().info("Config is outdated, updating...");
 //			Add the new content form the internal config file to the config file
 
 			saveResource("config.yml", true);
 			getLogger().info("Config has been updated to the latest version!");
-
-
-
-
-
-
 
 
 		}
