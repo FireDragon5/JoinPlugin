@@ -52,6 +52,17 @@ public class JoinEvent implements Listener {
 
 			event.setJoinMessage(Utils.chat(plugin.getConfig().getString("FirstJoin_Message").replace("%player%", player.getName())));
 
+//			First join titles
+			if (plugin.getConfig().getBoolean("FirstJoin_Titles")) {
+
+
+				player.sendTitle(Utils.chat(plugin.getConfig().getString("Title_FirstLine_FirstJoin")),
+						Utils.chat(plugin.getConfig().getString("Title_SecondLine_FirstJoin")),
+						plugin.getConfig().getInt("Title_FadeIn"),
+						plugin.getConfig().getInt("Title_FadeStay"),
+						plugin.getConfig().getInt("Title_FadeOut"));
+			}
+
 		} else {
 
 
@@ -91,9 +102,9 @@ public class JoinEvent implements Listener {
 				int random = (int) (Math.random() * randomJoinMessage.length);
 				event.setJoinMessage(Utils.chat(randomJoinMessage[random].replace("%player%", player.getName())));
 			} else {
-				event.setJoinMessage(
+				event.setJoinMessage(Utils.chat(
 						PlaceholderAPI.setPlaceholders(player, plugin.getConfig().getString("Join_Message")
-								.replace("%player%", player.getName())));
+								.replace("%player%", player.getName()))));
 
 
 			}
@@ -113,9 +124,9 @@ public class JoinEvent implements Listener {
 
 		if (plugin.getConfig().getBoolean("JoinMessage_Staff")) {
 			if (player.hasPermission("joinplugin.staff.join")) {
-				event.setJoinMessage(PlaceholderAPI.setPlaceholders(
+				event.setJoinMessage(Utils.chat(PlaceholderAPI.setPlaceholders(
 						player, plugin.getConfig().getString("Staff_Join_Message")
-								.replace("%player%", player.getName())));
+								.replace("%player%", player.getName()))));
 
 			}
 //

@@ -23,17 +23,17 @@ permissions:
       default: op
       description: Reloads the plugin
     joinplugin.joinmessage:
-        default: op
-        description: Allows you to change the join message
+      default: op
+      description: Allows you to change the join message
     joinplugin.staff.join:
-        default: op
-        description: Allows you to change the staff join message
+      default: op
+      description: Allows you to change the staff join message
     joinplugin.menu:
-        default: op
-        description: Allows you to open the JoinPlugin menu
+      default: op
+      description: Allows you to open the JoinPlugin menu
     joinplugin.staff.silentjoin:
-        default: op
-        description: Allows you to change the staff silent join message
+      default: op
+      description: Allows you to change the staff silent join message
 
 
 

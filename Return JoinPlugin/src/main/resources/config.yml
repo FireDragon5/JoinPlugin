@@ -17,9 +17,17 @@ Random_Join_Message:
 #Want Titles to show on join?
 Join_Titles: true
 
+#Want the first join title to show?
+FirstJoin_Titles: true
+
 #First Line titles
 Title_FirstLine_Join: '&6Welcome to the server, %player%!'
 Title_SecondLine_Join: '&aEnjoy your stay!'
+
+#First Join Titles
+#It uses the same as the Title fadeIn, stay and fade out
+Title_FirstLine_FirstJoin: '&6Welcome to the server, %player%!'
+Title_SecondLine_FirstJoin: '&aEnjoy your stay!'
 
 #Here you can change how long the titles will be displayed
 # 20 ticks = 1 second
@@ -71,4 +79,4 @@ BossBar_Color: 'PINK'
 BossBar_Style: 'Solid'
 
 #Config version please don't change
-Config_Version: 1.1
+Config_Version: 1.2
