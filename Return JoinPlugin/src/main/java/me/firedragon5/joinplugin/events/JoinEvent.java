@@ -7,15 +7,10 @@ import org.bukkit.Bukkit;
 import org.bukkit.boss.BarColor;
 import org.bukkit.boss.BarStyle;
 import org.bukkit.boss.BossBar;
-import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
-import org.bukkit.event.player.PlayerQuitEvent;
-
-import java.io.File;
-import java.util.Locale;
 
 public class JoinEvent implements Listener {
 
@@ -173,8 +168,8 @@ public class JoinEvent implements Listener {
 			BarStyle style = BarStyle.valueOf(plugin.getConfig().getString("BossBar_Style").toUpperCase());
 
 			BossBar bossBar = Bukkit.createBossBar(PlaceholderAPI.setPlaceholders(
-					player, plugin.getConfig().getString("BossBar_Message")
-							.replace("%player%", player.getName())), color, style);
+					player, Utils.chat(plugin.getConfig().getString("BossBar_Message")
+							.replace("%player%", player.getName()))), color, style);
 
 			bossBar.addPlayer(player);
 			bossBar.setVisible(true);
@@ -193,9 +188,9 @@ public class JoinEvent implements Listener {
 					bossBar.setTitle(
 
 							PlaceholderAPI.setPlaceholders(
-									player, plugin.getConfig().getString("BossBar_Message")
+									player, Utils.chat(plugin.getConfig().getString("BossBar_Message")
 											.replace("%player%", player.getName())
-									.replace("%time%", String.valueOf(timeLeft[0]))));
+									.replace("%time%", String.valueOf(timeLeft[0])))));
 
 
 					timeLeft[0]--;

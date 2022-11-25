@@ -1,14 +1,10 @@
 package me.firedragon5.joinplugin;
 
-import org.bstats.bukkit.Metrics;
-import com.google.common.cache.AbstractCache;
-import com.google.common.collect.Maps;
 import me.firedragon5.joinplugin.commands.AllCommands;
-import me.firedragon5.joinplugin.commands.reloadCommand;
 import me.firedragon5.joinplugin.events.JoinEvent;
 import me.firedragon5.joinplugin.events.LeaveEvent;
 import me.firedragon5.joinplugin.menu.Gui;
-
+import org.bstats.bukkit.Metrics;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -39,7 +35,9 @@ public final class JoinPlugin extends JavaPlugin {
 			getLogger().info("Config is outdated, updating...");
 //			Add the new content form the internal config file to the config file
 
-			saveResource("config.yml", true);
+			this.getConfig().options().copyDefaults(true);
+			saveConfig();
+//			saveResource("config.yml", true);
 			getLogger().info("Config has been updated to the latest version!");
 
 
@@ -61,6 +59,7 @@ public final class JoinPlugin extends JavaPlugin {
 		instance = this;
 
 		checkConfig();
+
 
 		getServer().getPluginManager().registerEvents(new Utils(this), this);
 		getServer().getPluginManager().registerEvents(new JoinEvent(this), this);
