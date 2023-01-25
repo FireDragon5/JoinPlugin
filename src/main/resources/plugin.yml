@@ -1,0 +1,46 @@
+name: JoinPlugin
+version: '${project.version}'
+main: me.firedragon5.joinplugin.JoinPlugin
+api-version: 1.19
+
+prefix: 'JoinPlugin'
+
+softdepend:
+  - PlaceholderAPI
+
+permissions:
+  joinplugin.*:
+    default: op
+    description: Gives access to all JoinPlugin commands
+    childern:
+      joinplugin.reload: true
+      joinplugin.joinmessage: true
+      joinplugin.staff.join: true
+      joinplugin.menu: true
+      joinplugin.staff.joinsilent: true
+
+    joinplugin.reload:
+      default: op
+      description: Reloads the plugin
+    joinplugin.joinmessage:
+      default: op
+      description: Allows you to change the join message
+    joinplugin.staff.join:
+      default: op
+      description: Allows you to change the staff join message
+    joinplugin.menu:
+      default: op
+      description: Allows you to open the JoinPlugin menu
+    joinplugin.staff.silentjoin:
+      default: op
+      description: Allows you to change the staff silent join message
+
+
+
+
+
+commands:
+  join:
+    description: JoinPlugin command
+    aliases: [joinplugin]
+    executor: me.firedragon5.joinplugin.JoinCommand
