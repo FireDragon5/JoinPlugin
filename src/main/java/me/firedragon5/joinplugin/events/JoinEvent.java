@@ -54,7 +54,7 @@ public class JoinEvent implements Listener {
 
 
 				player.sendTitle(Utils.chat(PlaceholderAPI.setPlaceholders(player, plugin.getConfig().getString("Title_FirstLine_FirstJoin"))
-				),  Utils.chat(PlaceholderAPI.setPlaceholders(player, plugin.getConfig().getString("Title_SecondLine_FirstJoin"))
+				),  Utils.chat(PlaceholderAPI.setPlaceholders(player, plugin.getConfig().getString("Title_SecondLine_FirstJoin").replace("%player%", player.getName()))
 				), plugin.getConfig().getInt("Title_FadeIn"), plugin.getConfig().getInt("Title_FadeStay"), plugin.getConfig().getInt("Title_FadeOut"));
 			}
 

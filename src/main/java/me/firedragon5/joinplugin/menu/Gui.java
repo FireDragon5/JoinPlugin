@@ -2,7 +2,6 @@ package me.firedragon5.joinplugin.menu;
 
 import me.firedragon5.joinplugin.JoinPlugin;
 import me.firedragon5.joinplugin.Utils;
-import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.boss.BarColor;
