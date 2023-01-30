@@ -10,6 +10,8 @@ public class configManager {
 		this.plugin = plugin;
 	}
 
+//	This is still a work in progress, but it will be used to set the default config values
+
 
 	//	Set the default config
 	public void setConfig() {

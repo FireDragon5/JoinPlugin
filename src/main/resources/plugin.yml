@@ -14,7 +14,6 @@ permissions:
     description: Gives access to all JoinPlugin commands
     childern:
       joinplugin.reload: true
-      joinplugin.joinmessage: true
       joinplugin.staff.join: true
       joinplugin.menu: true
       joinplugin.staff.joinsilent: true
@@ -23,10 +22,6 @@ permissions:
       default: op
       description: Reloads the plugin
       permessage: '&cYou do not have permission to reload the plugin'
-    joinplugin.joinmessage:
-      default: op
-      description: Allows you to change the join message
-
     joinplugin.staff.join:
       default: op
       description: Allows you to change the staff join message
