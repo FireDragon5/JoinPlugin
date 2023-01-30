@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 <!DOCTYPE xml>
 <project name="JoinPlugin" default="Build">
-    <property name="plugins" location="C:\Users\User\Desktop\Bit of Minecraft\Local Server\plugins"/>
+    <property name="plugins" location="C:\Users\User\Desktop\Random\Bit of Minecraft\Local Server\plugins"/>
 
     <target name="Build">
         <jar jarfile="${plugins}/JoinPlugin.jar" basedir="./target/classes/" includes="**/*"/>

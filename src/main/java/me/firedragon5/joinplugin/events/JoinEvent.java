@@ -4,6 +4,7 @@ import me.clip.placeholderapi.PlaceholderAPI;
 import me.firedragon5.joinplugin.JoinPlugin;
 import me.firedragon5.joinplugin.Utils;
 import org.bukkit.Bukkit;
+import org.bukkit.Location;
 import org.bukkit.Sound;
 import org.bukkit.boss.BarColor;
 import org.bukkit.boss.BarStyle;
@@ -199,6 +200,20 @@ public class JoinEvent implements Listener {
 				}
 			}, 0, 20);
 
+		}
+
+		if (plugin.getConfig().getBoolean("FirstJoin_Spawn_Location")){
+			if (player.hasPlayedBefore()){
+				return;
+			}
+			else {
+				if (plugin.getConfig().getString("FirstJoin_Spawn_Location_World").equals("None")){
+					player.sendMessage(Utils.chat("&cThe world you set in the config.yml does not exist!"));
+					return;
+				}
+
+				player.teleport(new Location(Bukkit.getWorld(plugin.getConfig().getString("FirstJoin_Spawn_Location_World")), plugin.getConfig().getDouble("FirstJoin_Spawn_Location_X"), plugin.getConfig().getDouble("FirstJoin_Spawn_Location_Y"), plugin.getConfig().getDouble("FirstJoin_Spawn_Location_Z")));
+			}
 		}
 	}
 }

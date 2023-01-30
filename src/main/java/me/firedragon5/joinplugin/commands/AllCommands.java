@@ -3,6 +3,7 @@ package me.firedragon5.joinplugin.commands;
 import me.firedragon5.joinplugin.JoinPlugin;
 import me.firedragon5.joinplugin.Utils;
 import me.firedragon5.joinplugin.menu.Gui;
+import org.bukkit.Location;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -11,6 +12,7 @@ import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class AllCommands implements CommandExecutor, TabCompleter {
 
@@ -53,6 +55,24 @@ public class AllCommands implements CommandExecutor, TabCompleter {
 							gui.createMenu(player);
 
 						}
+					}else if (args[0].equalsIgnoreCase("firstspawn")){
+//						When the player joins for the first time
+						Location plocation = player.getLocation();
+						plugin.getConfig().set("FirstJoin_Spawn_Location", plocation);
+						player.sendMessage(Utils.chat("&aFirst spawn location set!"));
+//						Show the x y and z values
+						player.sendMessage(Utils.chat("&aX: " + plocation.getX()
+								+ " Y: " + plocation.getY() +
+								" Z: " + plocation.getZ()));
+
+						try{
+							plugin.saveConfig();
+						}catch (Exception e) {
+							e.printStackTrace();
+						}
+					}else if (args[0].equalsIgnoreCase("testfirstspawn")){
+						Location location = (Location) plugin.getConfig().get("FirstJoin_Spawn_Location");
+						player.teleport(location);
 					}
 				}
 			}
@@ -71,6 +91,8 @@ public class AllCommands implements CommandExecutor, TabCompleter {
 			if (args.length == 1) {
 				list.add("reload");
 				list.add("menu");
+				list.add("firstspawn");
+				list.add("testfirstspawn");
 			}
 		}
 

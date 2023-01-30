@@ -90,5 +90,11 @@ BossBar_Color: 'PINK'
 #Bossbar style
 BossBar_Style: 'Solid'
 
+
+#First Join Spawn
+FirstJoin_Spawn: true
+#Spawn Location
+FirstJoin_Spawn_Location: "None"
+
 #Config version please don't change
 Config_Version: 1.2
