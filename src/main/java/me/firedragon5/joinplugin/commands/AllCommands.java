@@ -105,10 +105,10 @@ public class AllCommands implements CommandExecutor, TabCompleter {
 
 
 		if (command.getName().equalsIgnoreCase("join")) {
-			if (args.length == 0) {
+			if (args.length == 1) {
 //			Check the players permission
-				for (String permission : new String[] { "joinplugin.reload", "joinplugin.joinmessage", "joinplugin.menu", "joinplugin.firstspawn" }) {
-					switch(permission) {
+				for (String permission : new String[]{"joinplugin.reload", "joinplugin.joinmessage", "joinplugin.menu", "joinplugin.firstspawn"}) {
+					switch (permission) {
 						case "joinplugin.reload":
 							if (sender.hasPermission(permission)) {
 								list.add("reload");
@@ -136,8 +136,6 @@ public class AllCommands implements CommandExecutor, TabCompleter {
 							break;
 					}
 				}
-
-
 			}
 
 		}

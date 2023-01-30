@@ -62,10 +62,6 @@ public final class JoinPlugin extends JavaPlugin {
 		this.getConfig().options().copyDefaults(false);
 		saveConfig();
 
-
-
-
-
 		getServer().getPluginManager().registerEvents(new Utils(this), this);
 		getServer().getPluginManager().registerEvents(new JoinEvent(this), this);
 		getServer().getPluginManager().registerEvents(new LeaveEvent(this), this);
