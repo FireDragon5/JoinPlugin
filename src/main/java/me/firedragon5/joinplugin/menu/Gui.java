@@ -18,6 +18,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Gui implements Listener {
 
@@ -135,6 +136,19 @@ public class Gui implements Listener {
 
 
 
+		ItemStack firstJoinSpawn = new ItemStack(Material.ENDER_PEARL);
+		ItemMeta firstJoinSpawnMeta = firstJoinSpawn.getItemMeta();
+
+		firstJoinSpawnMeta.setDisplayName(Utils.chat("&bFirst Join Spawn"));
+		List<String> firstJoinSpawnLore = new ArrayList<>();
+		firstJoinSpawnLore.add(Utils.chat("&aCheck the first join spawn"));
+		firstJoinSpawnLore.add(Utils.chat("&aYou will be teleported to the spawn on your first join"));
+
+		firstJoinSpawnMeta.setLore(firstJoinSpawnLore);
+		firstJoinSpawn.setItemMeta(firstJoinSpawnMeta);
+		inv.setItem(33, firstJoinSpawn);
+
+
 
 
 
@@ -211,6 +225,17 @@ public class Gui implements Listener {
 				}, 0, 20);
 
 				player.closeInventory();
+			}
+
+			if (event.getCurrentItem().getType() == Material.ENDER_PEARL) {
+				try{
+					player.teleport(plugin.getConfig().getLocation("First_Join_Spawn"));
+					player.closeInventory();
+				}catch (Exception e) {
+					player.closeInventory();
+					player.sendMessage(Utils.chat("&cThere is no spawn set!"));
+				}
+
 			}
 
 

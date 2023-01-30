@@ -31,13 +31,18 @@ public class AllCommands implements CommandExecutor, TabCompleter {
 
 			if (command.getName().equalsIgnoreCase("join")) {
 				if (args.length == 0) {
-					player.sendMessage(Utils.chat("&cUsage: /join {reload|menu}"));
 					return true;
 				} else {
 					if (args[0].equalsIgnoreCase("reload")) {
 
-						JoinPlugin.getInstance().reloadConfig();
-						player.sendMessage(Utils.chat("&aConfig reloaded!"));
+						if (player.hasPermission("joinplugin.reload")) {
+							JoinPlugin.getInstance().reloadConfig();
+							player.sendMessage(Utils.chat("&aConfig reloaded!"));
+						} else {
+							player.sendMessage(Utils.chat("&cYou do not have permissions for this command!"));
+						}
+
+
 
 
 					} else if (args[0].equalsIgnoreCase("jmessage")) {
@@ -56,6 +61,12 @@ public class AllCommands implements CommandExecutor, TabCompleter {
 
 						}
 					}else if (args[0].equalsIgnoreCase("firstspawn")){
+
+						if (!player.hasPermission("joinplugin.firstspawn")){
+							player.sendMessage(Utils.chat("&cYou do not have permissions for this command!"));
+							return true;
+						}
+
 //						When the player joins for the first time
 						Location plocation = player.getLocation();
 						plugin.getConfig().set("FirstJoin_Spawn_Location", plocation);
@@ -71,8 +82,13 @@ public class AllCommands implements CommandExecutor, TabCompleter {
 							e.printStackTrace();
 						}
 					}else if (args[0].equalsIgnoreCase("testfirstspawn")){
-						Location location = (Location) plugin.getConfig().get("FirstJoin_Spawn_Location");
-						player.teleport(location);
+						try{
+							Location location = (Location) plugin.getConfig().get("FirstJoin_Spawn_Location");
+							player.teleport(location);
+						}catch (Exception e){
+							player.sendMessage(Utils.chat("&cFirst spawn location not set!"));
+						}
+
 					}
 				}
 			}
@@ -87,13 +103,43 @@ public class AllCommands implements CommandExecutor, TabCompleter {
 
 		List<String> list = new ArrayList<>();
 
+
 		if (command.getName().equalsIgnoreCase("join")) {
-			if (args.length == 1) {
-				list.add("reload");
-				list.add("menu");
-				list.add("firstspawn");
-				list.add("testfirstspawn");
+			if (args.length == 0) {
+//			Check the players permission
+				for (String permission : new String[] { "joinplugin.reload", "joinplugin.joinmessage", "joinplugin.menu", "joinplugin.firstspawn" }) {
+					switch(permission) {
+						case "joinplugin.reload":
+							if (sender.hasPermission(permission)) {
+								list.add("reload");
+							}
+							break;
+						case "joinplugin.joinmessage":
+							if (sender.hasPermission(permission)) {
+								list.add("jmessage");
+							}
+							break;
+						case "joinplugin.menu":
+							if (sender.hasPermission(permission)) {
+								list.add("menu");
+							}
+							break;
+						case "joinplugin.firstspawn":
+							if (sender.hasPermission(permission)) {
+								list.add("firstspawn");
+								list.add("testfirstspawn");
+							}
+							break;
+
+						default:
+							sender.sendMessage(Utils.chat("&cError: Permission not found!"));
+							break;
+					}
+				}
+
+
 			}
+
 		}
 
 		for (String s : args) {

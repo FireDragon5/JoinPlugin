@@ -22,9 +22,11 @@ permissions:
     joinplugin.reload:
       default: op
       description: Reloads the plugin
+      permessage: '&cYou do not have permission to reload the plugin'
     joinplugin.joinmessage:
       default: op
       description: Allows you to change the join message
+
     joinplugin.staff.join:
       default: op
       description: Allows you to change the staff join message

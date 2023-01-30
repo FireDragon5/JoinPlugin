@@ -92,9 +92,15 @@ BossBar_Style: 'Solid'
 
 
 #First Join Spawn
+#Change to false to not spawn players on first join
 FirstJoin_Spawn: true
 #Spawn Location
 FirstJoin_Spawn_Location: "None"
+
+
+
+#No permission message
+No_Permission: '&cYou do not have permission to do this!'
 
 #Config version please don't change
 Config_Version: 1.2
