@@ -1,4 +1,5 @@
 #Welcome
+#%player% will show the players name
 
 #Message of Player first join
 FirstJoin_Message: '&6Welcome to the server, %player%!'

@@ -125,7 +125,7 @@ public class JoinEvent implements Listener {
 			}
 //
 		} else if (plugin.getConfig().getBoolean("Staff_Silent_Join")) {
-			if (player.hasPermission("joinplugin.staff.joinsilent")) {
+			if (player.hasPermission("joinplugin.staff.silentjoin")) {
 				event.setJoinMessage(null);
 			}
 		}

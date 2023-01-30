@@ -127,7 +127,6 @@ public class AllCommands implements CommandExecutor, TabCompleter {
 						case "joinplugin.firstspawn":
 							if (sender.hasPermission(permission)) {
 								list.add("firstspawn");
-								list.add("testfirstspawn");
 							}
 							break;
 

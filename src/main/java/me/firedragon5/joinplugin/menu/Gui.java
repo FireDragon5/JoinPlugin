@@ -229,7 +229,8 @@ public class Gui implements Listener {
 
 			if (event.getCurrentItem().getType() == Material.ENDER_PEARL) {
 				try{
-					player.teleport(plugin.getConfig().getLocation("First_Join_Spawn"));
+					player.teleport(plugin.getConfig().getLocation("FirstJoin_Spawn_Location"));
+					player.sendMessage(Utils.chat("&aTeleported to the first join spawn!"));
 					player.closeInventory();
 				}catch (Exception e) {
 					player.closeInventory();
