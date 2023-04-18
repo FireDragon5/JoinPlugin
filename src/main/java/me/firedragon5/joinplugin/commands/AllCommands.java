@@ -75,6 +75,7 @@ public class AllCommands implements CommandExecutor, TabCompleter {
 						try {
 							Location location = (Location) plugin.getConfig().get("FirstJoin_Spawn_Location");
 							player.teleport(location);
+							player.sendMessage(Utils.chat("&aTeleported to first spawn location!"));
 						} catch (Exception e) {
 							player.sendMessage(Utils.chat("&cFirst spawn location not set!"));
 						}
@@ -83,7 +84,7 @@ public class AllCommands implements CommandExecutor, TabCompleter {
 //					else if (args[0].equalsIgnoreCase("stats")){
 //
 //						if (args.length == 1){
-//							//						Get the player first join time
+//							//						Get the player first join time~
 //							long firstJoin = player.getFirstPlayed();
 //							long lastJoin = player.getLastPlayed();
 ////							String format it to a days, hours, minutes, seconds
@@ -116,6 +117,8 @@ public class AllCommands implements CommandExecutor, TabCompleter {
 				}
 			}
 		}
+
+
 
 
 		return false;
@@ -154,8 +157,10 @@ public class AllCommands implements CommandExecutor, TabCompleter {
 						case "joinplugin.firstspawn":
 							if (sender.hasPermission(permission)) {
 								list.add("firstspawn");
+								list.add("testfirstspawn");
 							}
 							break;
+
 
 					}
 				}
@@ -165,11 +170,6 @@ public class AllCommands implements CommandExecutor, TabCompleter {
 			}
 
 
-		}
-//				If the command is not in the list send the sender a message
-//				Check after the player presses enter
-		if (!commands.contains(args[0])){
-			sender.sendMessage(Utils.chat("&cCommand not found!"));
 		}
 
 		for (String s : args) {

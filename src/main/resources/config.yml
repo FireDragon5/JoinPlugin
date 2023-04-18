@@ -70,7 +70,7 @@ Join_Sound: true
 
 #Change the sound to play
 #https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Sound.html
-#Remember this is case sensitive
+#Remember this is case-sensitive
 Join_Sound_Type: 'ENTITY_PLAYER_LEVELUP'
 
 #Volume of the sound
@@ -93,7 +93,7 @@ BossBar_Style: 'Solid'
 
 
 #First Join Spawn
-#Change to false to not spawn players on first join
+#Change too false to not spawn players on first join
 FirstJoin_Spawn: true
 #Spawn Location
 FirstJoin_Spawn_Location: "None"
