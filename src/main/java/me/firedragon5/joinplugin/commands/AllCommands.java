@@ -180,3 +180,4 @@ public class AllCommands implements CommandExecutor, TabCompleter {
 		return list;
 	}
 }
+
