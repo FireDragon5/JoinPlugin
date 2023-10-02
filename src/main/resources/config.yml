@@ -1,107 +1,126 @@
-#Welcome
-#%player% will show the players name
+# Welcome
+# %player% will show the players name
 
-#Message of Player first join
+# Message of Player first join
 FirstJoin_Message: '&6Welcome to the server, %player%!'
 
-#Message of Player join
+# Message of Player join
 Join_Message: '&aWelcome to the server, %player%!'
 
-#Random Message?
-Random_Message: true
-#Random Message of Player join
+# Random Message?
+Random_Message: false
+# Random Message of Player join
 Random_Join_Message:
-  - '&aWelcome to the server, %player%!'
-  - '&a+ %player% has joined the server!'
-  - '&a%player% has joined the server!'
+- '&aWelcome to the server, %player%!'
+- '&a+ %player% has joined the server!'
+- '&a%player% has joined the server!'
 
-#Want Titles to show on join?
+# Want Titles to show on join?
 Join_Titles: true
 
-#Want the first join title to show?
+# Want the first join title to show?
 FirstJoin_Titles: true
 
-#First Line titles
+# First Line titles
 Title_FirstLine_Join: '&6Welcome to the server, %player%!'
 Title_SecondLine_Join: '&aEnjoy your stay!'
 
-#First Join Titles
-#It uses the same as the Title fadeIn, stay and fade out
+# First Join Titles
+# It uses the same as the Title fadeIn, stay and fade out
 Title_FirstLine_FirstJoin: '&6Welcome to the server, %player%!'
 Title_SecondLine_FirstJoin: '&aEnjoy your stay!'
 
-#Here you can change how long the titles will be displayed
+# Here you can change how long the titles will be displayed
 # 20 ticks = 1 second
-Title_FadeIn: 10 #Ticks
-Title_FadeStay: 70 #Ticks
-Title_FadeOut: 10 #Ticks
+Title_FadeIn: 10 # Ticks
+Title_FadeStay: 70 # Ticks
+Title_FadeOut: 10 # Ticks
 
-#Show staff when they join (Make false to not show staff when they join)
-JoinMessage_Staff: true
-#Message of Staff join
+# Show staff when they join (Make false to not show staff when they join)
+JoinMessage_Staff: false
+# Message of Staff join
 Staff_Join_Message: '&a%player% has joined the server!'
-#Staff Silent Join (Make false to not show staff when they join)
-Staff_Silent_Join: true
+# Staff Silent Join (Make false to not show staff when they join)
+Staff_Silent_Join: false
 
 
-#Message of Player leave
+# Message of Player leave
 Leave_Message: '&c%player% has left the server.'
 
 
-#Player Announcements on Join
+# Player Announcements on Join
 JoinAnnouncements_Enabled: true
 JoinAnnouncement_Message:
-  - '&b===================================='
-  - '&bWelcome to the server, %player%!'
-  - '&b===================================='
-  - '&bWe hope you enjoy your stay!'
-  - '&b===================================='
-  - '&bPlease read the rules!'
-  - '&b===================================='
+- '&b===================================='
+- '&bWelcome to the server, %player%!'
+- '&b===================================='
+- '&bWe hope you enjoy your stay!'
+- '&b===================================='
+- '&bPlease read the rules!'
+- '&b===================================='
 
-#Spawn in so firework on join?
+# Spawn in so firework on join?
 Spawn_Firework: true
-#Delay of the firework
-Firework_Delay: 5 #Seconds
+# Delay of the firework
+Firework_Delay: 5 # Seconds
 
-#Join Sound (Make false to not play a sound)
+# Join Sound (Make false to not play a sound)
 Join_Sound: true
 
 
-#Change the sound to play
-#https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Sound.html
-#Remember this is case-sensitive
-Join_Sound_Type: 'ENTITY_PLAYER_LEVELUP'
+# Change the sound to play
+# https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Sound.html
+# Remember this is case-sensitive
+Join_Sound_Type: ENTITY_PLAYER_LEVELUP
 
-#Volume of the sound
+# Volume of the sound
 Join_Sound_Volume: 1
-#Pitch of the sound
+# Pitch of the sound
 Join_Sound_Pitch: 1
 
 
 
-#Bossbar
+# Bossbar
 BossBar_Enabled: true
-#Bossbar timer
-BossBar_Timer: 5 #Seconds
-#Bossbar message
+# Bossbar timer
+BossBar_Timer: 5 # Seconds
+# Bossbar message
 BossBar_Message: '&aWelcome to the server, %player%!'
-#Bossbar color
-BossBar_Color: 'PINK'
-#Bossbar style
-BossBar_Style: 'Solid'
+# Bossbar color
+BossBar_Color: PINK
+# Bossbar style
+BossBar_Style: Solid
 
 
-#First Join Spawn
-#Change too false to not spawn players on first join
+# First Join Spawn
+# Change too false to not spawn players on first join
 FirstJoin_Spawn: true
-#Spawn Location
-FirstJoin_Spawn_Location: "None"
+# Spawn Location
+FirstJoin_Spawn_Location: None
 
 
+# Join commands list
 
-#No permission message
+#Set this to true and no command will run for a op player
+#This is useful if you want to run commands for non op players
+if_op_dont_run_commands: true
+
+Random_Command: true
+# Commands on join
+Random_Command_List:
+- say %player% has joined the server!
+- say Welcome to the server, %player%!
+
+# This will run if the Random_Command is false
+# Leave empty if you don't want any commands to run
+# All of the commands in the Command_List will run!
+Command_List:
+- say %player% has joined the server!
+- say Welcome to the server, %player%!
+
+
+# No permission message
 No_Permission: '&cYou do not have permission to do this!'
 
-#Config version please don't change
+# Config version please don't change
 Config_Version: 1.2

@@ -27,24 +27,8 @@ public class JoinEvent implements Listener {
 	public void onJoin(PlayerJoinEvent event) {
 		Player player = event.getPlayer();
 
+
 		if (!player.hasPlayedBefore()) {
-
-//			Increase the total by 1 and also store the UUID in the config
-
-//			File file = new File(plugin.getDataFolder(), "playerData.yml");
-//			YamlConfiguration playerData = YamlConfiguration.loadConfiguration(file);
-//
-//			int total = playerData.getInt("Total_Players");
-//			total++;
-//			playerData.set("Total_Players", total);
-//
-//			playerData.set("Players." + player.getName(),player.getUniqueId().toString());
-//
-//			try {
-//				playerData.save(file);
-//			} catch (Exception e) {
-//				e.printStackTrace();
-//			}
 
 
 			event.setJoinMessage(Utils.chat(PlaceholderAPI.setPlaceholders(player, plugin.getConfig().getString("First" +
@@ -60,22 +44,6 @@ public class JoinEvent implements Listener {
 			}
 
 		} else {
-
-
-//			Add a count of player joins here of the day
-//			File file = new File(plugin.getDataFolder(), "playerData.yml");
-//			YamlConfiguration playerData = YamlConfiguration.loadConfiguration(file);
-//
-//
-//			int count = playerData.getInt(player.getUniqueId() + ".joins");
-//			count++;
-//			playerData.set(player.getUniqueId() + ".joins", count);
-//
-//			try {
-//				playerData.save(file);
-//			} catch (Exception e) {
-//				e.printStackTrace();
-//			}
 
 
 			if (plugin.getConfig().getBoolean("JoinAnnouncements_Enabled")) {
@@ -116,6 +84,43 @@ public class JoinEvent implements Listener {
 		}
 
 
+
+
+//			When a player joins run one of the commands in the command list
+//			Pick a random command from the list
+
+		if (plugin.getConfig().getBoolean("Random_Command")) {
+//				Don't run the command if the player is op
+			if (player.isOp()){
+				return;
+			}
+
+			String[] randomCommand = plugin.getConfig().getStringList("Random_Command_List").toArray(new String[0]);
+			int random = (int) (Math.random() * randomCommand.length);
+			Bukkit.dispatchCommand(Bukkit.getConsoleSender(), PlaceholderAPI.setPlaceholders(player,randomCommand[random].replace("%player%", player.getName())));
+		} else {
+
+
+
+//				If a list is empty return
+			if (plugin.getConfig().getStringList("Command_List").isEmpty()) {
+
+				return;
+			} else {
+
+				//				if the player is op don't run the command
+				if (player.isOp()){
+					return;
+				}
+
+				for (String command : plugin.getConfig().getStringList("Command_List")) {
+					Bukkit.dispatchCommand(Bukkit.getConsoleSender(), PlaceholderAPI.setPlaceholders(player,command.replace("%player%", player.getName())));
+				}
+			}
+		}
+
+
+
 		if (plugin.getConfig().getBoolean("JoinMessage_Staff")) {
 			if (player.hasPermission("joinplugin.staff.join")) {
 				event.setJoinMessage(Utils.chat(PlaceholderAPI.setPlaceholders(
@@ -149,8 +154,6 @@ public class JoinEvent implements Listener {
 			plugin.getServer().getScheduler().scheduleSyncDelayedTask(plugin, new Runnable() {
 				@Override
 				public void run() {
-
-
 
 //					Play the sound from the config
 					player.playSound(player.getLocation(), Sound.valueOf(plugin.getConfig().getString("Join_Sound_Type"))

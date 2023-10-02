@@ -31,6 +31,16 @@ public class AllCommands implements CommandExecutor, TabCompleter {
 
 			if (command.getName().equalsIgnoreCase("join")) {
 				if (args.length == 0) {
+
+//					Show what all of the commands are
+					player.sendMessage(Utils.chat("&a&lJoinPlugin Commands"));
+					player.sendMessage(Utils.chat("&a/join reload - Reload the config"));
+					player.sendMessage(Utils.chat("&a/join menu - Open the menu"));
+					player.sendMessage(Utils.chat("&a/join firstspawn - Set the first spawn location"));
+					player.sendMessage(Utils.chat("&a/join testfirstspawn - Teleport to the first spawn location"));
+
+
+
 					return true;
 				} else {
 					if (args[0].equalsIgnoreCase("reload")) {
@@ -50,9 +60,9 @@ public class AllCommands implements CommandExecutor, TabCompleter {
 							gui.createMenu(player);
 
 						}
-					}else if (args[0].equalsIgnoreCase("firstspawn")){
+					} else if (args[0].equalsIgnoreCase("firstspawn")) {
 
-						if (!player.hasPermission("joinplugin.firstspawn")){
+						if (!player.hasPermission("joinplugin.firstspawn")) {
 							player.sendMessage(Utils.chat("&cYou do not have permissions for this command!"));
 							return true;
 						}
@@ -66,12 +76,12 @@ public class AllCommands implements CommandExecutor, TabCompleter {
 								+ " Y: " + plocation.getY() +
 								" Z: " + plocation.getZ()));
 
-						try{
+						try {
 							plugin.saveConfig();
-						}catch (Exception e) {
+						} catch (Exception e) {
 							e.printStackTrace();
 						}
-					}else if (args[0].equalsIgnoreCase("testfirstspawn")) {
+					} else if (args[0].equalsIgnoreCase("testfirstspawn")) {
 						try {
 							Location location = (Location) plugin.getConfig().get("FirstJoin_Spawn_Location");
 							player.teleport(location);
@@ -81,41 +91,10 @@ public class AllCommands implements CommandExecutor, TabCompleter {
 						}
 					}
 
-//					else if (args[0].equalsIgnoreCase("stats")){
-//
-//						if (args.length == 1){
-//							//						Get the player first join time~
-//							long firstJoin = player.getFirstPlayed();
-//							long lastJoin = player.getLastPlayed();
-////							String format it to a days, hours, minutes, seconds
-//							player.sendMessage(Utils.chat("&aFirst join: " + String.format("%d days, %d hours, %d minutes, %d seconds",
-//									firstJoin / 86400000, firstJoin / 3600000 % 24, firstJoin / 60000 % 60, firstJoin / 1000 % 60)));
-//							player.sendMessage(Utils.chat("&aLast join: " + lastJoin));
-//						}else
-//
-//						if (args.length == 2){
-//							player.sendMessage(Utils.chat("&cPlease specify a player!"));
-//							return true;
-//						}else {
-//							Player target = plugin.getServer().getPlayer(args[1]);
-//							if (target == null){
-//								player.sendMessage(Utils.chat("&cPlayer not found!"));
-//								return true;
-//							}
-//							long firstJoin = target.getFirstPlayed();
-//							long lastJoin = target.getLastPlayed();
-//							player.sendMessage(Utils.chat("&aFirst join: " + firstJoin));
-//							player.sendMessage(Utils.chat("&aLast join: " + lastJoin));
-//
-//						}
-//
-//
-//
-//
-//
-//					}
 				}
 			}
+		} else {
+			sender.sendMessage(Utils.chat("&cYou must be a player to use this command!"));
 		}
 
 
@@ -133,10 +112,6 @@ public class AllCommands implements CommandExecutor, TabCompleter {
 		List <String> commands = new ArrayList<>();
 //		Add multiple commands to the list
 		commands.add("reload"); commands.add("jmessage"); commands.add("menu"); commands.add("firstspawn");
-
-
-
-
 
 
 		if (command.getName().equalsIgnoreCase("join")) {
